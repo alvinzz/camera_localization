@@ -124,8 +124,8 @@ class PatternFinder:
         # Display the final result!
         self._evaluate_pose_guess(guess, show_proj=True)
         print("Estimated (x, y, z, pitch, yaw, roll) for " + self.im_name + ":\n" \
-            + "    ({0}, {1}, {2}, {3}, {4}, {5})" \
-            .format(int(xc), int(yc), int(zc), int(pitch), int(yaw), int(roll)))
+            + "    ({0:.1f}, {1:.1f}, {2:.1f}, {3:.0f}, {4:.0f}, {5:.0f})" \
+            .format(xc, yc, zc, pitch, yaw, roll))
         return guess
 
     def _evaluate_pose_guess(self, guess, show_proj=False):
@@ -154,8 +154,8 @@ class PatternFinder:
 
             plt.subplot(122)
             plt.title("Projected view for camera w/ pose: \n \
-                (x, y, z, pitch, ya, roll) = ({0}, {1}, {2}, {3}, {4}, {5})" \
-                .format(int(xc), int(yc), int(zc), int(pitch), int(yaw), int(roll)))
+                (x, y, z, pitch, ya, roll) = ({0:.1f}, {1:.1f}, {2:.1f}, {3:.0f}, {4:.0f}, {5:.0f})" \
+                .format(xc, yc, zc, pitch, yaw, roll))
             projection = get_view(xc, yc, zc, pitch, yaw, roll, self.xstride, self.ystride)
             plt.imshow(projection, cmap='gray')
             plt.plot(self.xmin[0], self.xmin[1], marker='o', color='g')
