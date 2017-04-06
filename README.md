@@ -16,8 +16,10 @@ Locate the QR code within the image.
 ![qr corner finding](camera_localization2.png)
 
 Estimate the camera pose, using the corners of the QR pattern.
-* Gradient descent and numpy's fsolve both fail to converge to a reasonable degree.
-* Use a random walk with decreasing step sizes through time.
+* My implementation of SGD and numpy's fsolve both failed to converge to a good answer.
+* Use a guided random walk with decreasing step sizes through time.
+  * At each time step, propose a random step.
+  * Accept the step if it brings us closer to the goal.
 * Definitely an area for improvement.
 ![camera localization](camera_localization.png)
 
